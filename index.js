@@ -2,6 +2,23 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+
+// Connect to MongoDB in Atlas
+const mongoUri = process.env['MONGO_URI']
+mongoose.connect(process.env['MONGO_URI'], { useNewUrlParser: true });
+
+// DB Schema
+const URLSchema = new mongoose.Schema({
+  original_url: String,
+  short_url: Number
+})
+
+// Create DB Model
+const URLShortener = mongoose.model('URLs', URLSchema)
+
+
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
