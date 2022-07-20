@@ -1,9 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
+const app = express();
 
 // Connect to MongoDB in Atlas
 const mongoUri = process.env['MONGO_URI']
